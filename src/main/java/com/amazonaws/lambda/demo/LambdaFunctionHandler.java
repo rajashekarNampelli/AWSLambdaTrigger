@@ -35,9 +35,6 @@ public class LambdaFunctionHandler implements RequestHandler<S3Event, String> {
             S3Object response = s3.getObject(new GetObjectRequest(bucket, key));
             String contentType = response.getObjectMetadata().getContentType();
             context.getLogger().log("CONTENT TYPE: " + contentType);
-            S3Object xFile = s3.getObject(bucket, "app.js");
-            InputStream contents = xFile.getObjectContent();
-            context.getLogger().log("COntents " + contents);
             return contentType;
         } catch (Exception e) {
             e.printStackTrace();
